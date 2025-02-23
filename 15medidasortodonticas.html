@@ -29,6 +29,12 @@
     <!-- Main Content -->
     <main class="flex flex-col gap-4">
 
+        <!-- Abas -->
+        <div class="flex gap-2">
+            <button class="tab-button active bg-gray-800/50 backdrop-blur-md rounded-2xl p-3 flex-1 text-center border-2 border-[#D6FE95] text-[#D6FE95]" data-tab="clinica" onclick="showTab('clinica')">USP</button>
+            <button class="tab-button bg-gray-800/50 backdrop-blur-md rounded-2xl p-3 flex-1 text-center border-2 border-transparent hover:border-[#D6FE95]/50" data-tab="pacientes" onclick="showTab('pacientes')">Ricketts</button>
+        </div>
+
         <!-- Measurement Input Fields -->
         <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 space-y-4">
             <div>
@@ -61,14 +67,27 @@
     <script>
         lucide.createIcons();
 
+        function showTab(tabName) {
+            // Remove active class and styling from all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.remove('border-[#D6FE95]');
+                button.classList.remove('text-[#D6FE95]');
+            });
+
+            // Add active class and styling to clicked tab button
+            const activeButton = document.querySelector(`[data-tab="${tabName}"]`);
+            activeButton.classList.add('active');
+            activeButton.classList.add('border-[#D6FE95]');
+            activeButton.classList.add('text-[#D6FE95]');
+        }
+
         function goBack() {
-            // Implement navigation to previous step
-            // window.location.href = 'pagina-anterior.html';
+            window.location.href = '14uploadradio.html';
         }
 
         function goForward() {
-            // Implement navigation to next step
-            // window.location.href = 'proxima-pagina.html';
+            window.location.href = '16gerarapresentacao.html';
         }
     </script>
 </body>

@@ -11,9 +11,43 @@
         .highlight {
             border: 2px solid yellow;
         }
+
+        /* Landscape notification styles */
+        .landscape-notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.63);
+            z-index: 1000;
+            justify-content: center;
+            align-items: end;
+            backdrop-filter: blur(4px);
+        }
+
+        @media (orientation: portrait) {
+            .landscape-notification {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Landscape notification -->
+    <div class="landscape-notification">
+        <div class="text-center px-4 pt-4 pb-12 rounded-tr-3xl rounded-tl-3xl bg-gray-800/80 backdrop-blur-md flex flex-col items-center gap-4 w-full">
+            <div class="bg-white/20 w-20 h-2 rounded-full mb-4"></div>
+            <div class="bg-[#c1e982]/20 p-4 rounded-lg">
+                <img src="asset/rotate-right.svg" alt="" class="h-12 w-12">
+            </div>
+            <p class="text-lg font-medium">Gire seu dispositivo para melhor visualização</p>
+            <button onclick="dismissNotification()" class="px-4 py-2 rounded-lg bg-[#D6FE95] text-black font-medium hover:bg-[#c1e982] w-full transition-colors">
+                Entendi
+            </button>
+        </div>
+    </div>
     <!-- Blur gradient effect -->
     <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
     
@@ -107,6 +141,10 @@
 
         function goForward() {
             // Implement navigation to next slide
+        }
+
+        function dismissNotification() {
+            document.querySelector('.landscape-notification').style.display = 'none';
         }
     </script>
 </body>
