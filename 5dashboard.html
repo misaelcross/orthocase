@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .blur-gradient {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(120deg, #D6FE95 0%, #b3e07f 100%);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        :root {
+            --chart-1: #FFB5B5;  /* Pastel Red */
+            --chart-2: #B5D8FF;  /* Pastel Blue */
+            --chart-3: #FFE5B5;  /* Pastel Orange */
+            --chart-4: #B5FFB5;  /* Pastel Green */
+            --chart-5: #E5B5FF;  /* Pastel Purple */
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 40;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100%;
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            transition: right 0.3s ease-in-out;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .menu-panel.active {
+            right: 0;
+        }
+        #sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 64px;
+            background-color: #333;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 50;
+        }
+        #sidebar.active {
+            transform: translateX(0);
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+        }
+        #overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Gradient blur background -->
+    <div class="blur-gradient top-0 right-0"></div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- Menu Panel -->
+    <div class="menu-panel p-6 space-y-6" id="menuPanel">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-xl font-semibold">Menu</h2>
+            <button class="p-2 hover:bg-gray-700/50 rounded-full" onclick="toggleMenu()">
+                <i data-lucide="x" class="h-6 w-6"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <a href="#" class="flex items-center gap-3 p-3 hover:bg-gray-700/50 rounded-xl transition-colors">
+                <i data-lucide="user" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 hover:bg-gray-700/50 rounded-xl transition-colors">
+                <i data-lucide="settings" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Configurações</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 hover:bg-gray-700/50 rounded-xl transition-colors">
+                <i data-lucide="help-circle" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Ajuda</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 hover:bg-gray-700/50 rounded-xl transition-colors">
+                <i data-lucide="bell" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Notificações</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 hover:bg-gray-700/50 rounded-xl transition-colors">
+                <i data-lucide="credit-card" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Planos de Pagamento</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 hover:bg-gray-700/50 rounded-xl transition-colors">
+                <i data-lucide="info" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Sobre</span>
+            </a>
+            <hr class="border-gray-700">
+            <a href="login.html" class="flex items-center gap-3 p-3 hover:bg-gray-700/50 rounded-xl transition-colors text-red-400">
+                <i data-lucide="log-out" class="h-5 w-5"></i>
+                <span>Sair</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu Lateral -->
+    <div id="sidebar" class="fixed top-0 right-0 h-full w-64 bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+        <div class="p-4">
+            <button id="closeSidebar" class="text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <nav class="mt-4">
+                <a href="#" class="block py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white">Perfil</a>
+                <a href="#" class="block py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white">Configurações</a>
+                <a href="#" class="block py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white">Sair</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <div class="container mx-auto px-2 py-2">
+        <!-- Header -->
+        <header class="mb-20">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-12 h-12 rounded-full bg-gray-600 overflow-hidden">
+                        <a href="7perfil.html">
+                            <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="Profile" class="w-full h-full object-cover">
+                        </a>
+                    </div>
+                    <div>
+                        <h1 class="text-[1.5rem] font-normal">Dr. João Silva</h1>
+                        <p class="text-gray-400 font-light">Ortodontista</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 bg-gray-800/50 rounded-full relative">
+                        <i data-lucide="bell" class="h-6 w-6"></i>
+                        <span class="absolute -top-1 -right-1 bg-[#D6FE95] text-gray-900 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">3</span>
+                    </button>
+                    <button id="menuButton" class="p-2 bg-gray-800/50 rounded-full" onclick="toggleMenu()">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="grid grid-cols-3 gap-2 mb-4">
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                    <h3 class="text-[0.7rem] font-normal text-[#D6FE95] mb-2">Pacientes</h3>
+                    <p class="text-2xl font-light">12</p>
+                </div>
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                    <h3 class="text-[0.7rem] font-normal text-[#D6FE95] mb-2">Taxa Conversão</h3>
+                    <p class="text-2xl font-light">85%</p>
+                </div>
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                    <h3 class="text-[0.7rem] font-normal text-[#D6FE95] mb-2">Fechamentos</h3>
+                    <p class="text-2xl font-light">8</p>
+                </div>
+            </div>
+
+            <!-- Abas -->
+            <div class="flex gap-2 mb-4">
+                <button class="tab-button active bg-gray-800/50 backdrop-blur-md rounded-2xl p-3 flex-1 text-center border-2 border-transparent hover:border-[#D6FE95]/50" data-tab="clinica" onclick="showTab('clinica')">Clínica</button>
+                <button class="tab-button bg-gray-800/50 backdrop-blur-md rounded-2xl p-3 flex-1 text-center border-2 border-transparent hover:border-[#D6FE95]/50" data-tab="pacientes" onclick="showTab('pacientes')">Pacientes</button>
+            </div>
+
+            <!-- Conteúdo das Abas -->
+            <div id="tab-clinica" class="tab-content">
+                <!-- Charts -->
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+                    <div class="flex flex-col">
+                        <div class="text-center pb-0">
+                            <h2 class="text-lg font-normal">Conversão de Tratamentos</h2>
+                            <p class="text-sm text-gray-400">Últimos 6 meses</p>
+                        </div>
+                        <div class="flex-1 pb-0">
+                            <canvas id="conversionChart" class="w-full h-[200px]"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principais Queixas -->
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+                    <div class="flex flex-col gap-4">
+                        <div class="text-center pb-0">
+                            <h2 class="text-lg font-normal">Principais Queixas</h2>
+                            <p class="text-sm text-gray-400">Janeiro - Junho 2024</p>
+                        </div>
+                        <div class="flex-1 pb-0 relative h-[300px]">
+                            <canvas id="complaintsChart" class="mx-auto max-h-[300px]"></canvas>
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pb-12">
+                                <div class="text-2xl font-bold total-patients">1125</div>
+                                <div class="text-sm text-gray-400">Pacientes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div id="tab-pacientes" class="tab-content hidden">
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+                    <div class="flex flex-col gap-4">
+                        <div class="relative">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="relative flex-1">
+                                    <input type="text" placeholder="Buscar paciente..." class="w-full bg-gray-700/30 rounded-lg p-3 pl-10 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+                                    <i data-lucide="search" class="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                                <a href="8cadastrarpaciente.html" class="p-2 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 h-11 w-11 items-center flex justify-center">
+                                    <i data-lucide="plus" class="h-5 w-5 text-[#D6FE95]"></i>
+                                </a>
+                            </div>
+                            <div class="space-y-4 font-light">
+                                <div class="flex items-center justify-between p-3 bg-gray-700/30 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-gray-600 overflow-hidden">
+                                            <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm">Maria Santos</h3>
+                                            <p class="text-xs text-gray-400">Última consulta: 10/02/2024</p>
+                                        </div>
+                                    </div>
+                                    <button onclick="toggleVendaStatus(this)" class="px-3 py-1 rounded-full text-xs font-medium bg-gray-600 hover:bg-[#D6FE95] hover:text-gray-900 transition-colors" data-status="pendente">
+                                        Pendente
+                                    </button>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 bg-gray-700/30 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-gray-600 overflow-hidden">
+                                            <img src="https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm">Carlos Oliveira</h3>
+                                            <p class="text-xs text-gray-400">Última consulta: 08/02/2024</p>
+                                        </div>
+                                    </div>
+                                    <button onclick="toggleVendaStatus(this)" class="px-3 py-1 rounded-full text-xs font-medium bg-[#D6FE95] text-gray-900" data-status="fechado">
+                                        Fechado
+                                    </button>
+                                </div>
+
+                                <!-- Adicione mais pacientes conforme necessário -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bottom Navigation -->
+        <nav class="fixed bottom-4 left-4 right-4 bg-gray-800/90 backdrop-blur-md p-4 rounded-full shadow-lg">
+            <div class="flex justify-around max-w-md mx-auto">
+                <button class="p-2">
+                    <i data-lucide="home" class="h-6 w-6 text-[#D6FE95]"></i>
+                </button>
+                <button class="p-2">
+                    <i data-lucide="folder" class="h-6 w-6 text-gray-400"></i>
+                </button>
+                <button class="p-2">
+                    <i data-lucide="camera" class="h-6 w-6 text-gray-400"></i>
+                </button>
+                <button class="p-2">
+                    <i data-lucide="bar-chart-2" class="h-6 w-6 text-gray-400"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Menu Toggle Function
+        function toggleMenu() {
+            document.getElementById('menuPanel').classList.toggle('active');
+            document.getElementById('menuOverlay').classList.toggle('active');
+        }
+
+        // Close menu when clicking overlay
+        document.getElementById('menuOverlay').addEventListener('click', toggleMenu);
+
+        // Função para controle das abas
+        function showTab(tabName) {
+            // Esconde todas as abas
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Remove active de todos os botões
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.remove('bg-[#D6FE95]/10');
+                button.classList.remove('text-[#D6FE95]');
+                button.classList.remove('border-[#D6FE95]');
+                button.classList.add('border-transparent');
+            });
+            
+            // Mostra a aba selecionada
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            
+            // Ativa o botão selecionado
+            const activeButton = document.querySelector('[data-tab="' + tabName + '"]');
+            activeButton.classList.add('active');
+            activeButton.classList.add('bg-[#D6FE95]/10');
+            activeButton.classList.add('text-[#D6FE95]');
+            activeButton.classList.add('border-[#D6FE95]');
+            activeButton.classList.remove('border-transparent');
+        }
+
+        // Inicializar a primeira aba como ativa
+        showTab('clinica');
+
+        // Função para alternar o status da venda
+        function toggleVendaStatus(button) {
+            const isFechado = button.getAttribute('data-status') === 'fechado';
+            
+            if (isFechado) {
+                button.setAttribute('data-status', 'pendente');
+                button.textContent = 'Pendente';
+                button.classList.remove('bg-[#D6FE95]', 'text-gray-900');
+                button.classList.add('bg-gray-600', 'text-white');
+            } else {
+                button.setAttribute('data-status', 'fechado');
+                button.textContent = 'Fechado';
+                button.classList.remove('bg-gray-600', 'text-white');
+                button.classList.add('bg-[#D6FE95]', 'text-gray-900');
+            }
+            
+            updateStats();
+        }
+
+        // Função para atualizar as estatísticas
+        function updateStats() {
+            const totalPacientes = document.querySelectorAll('[data-status]').length;
+            const fechamentos = document.querySelectorAll('[data-status="fechado"]').length;
+            const taxaConversao = (fechamentos / totalPacientes * 100).toFixed(0);
+            
+            // Atualizar os números no dashboard
+            document.querySelector('div:nth-child(1) > p.text-2xl').textContent = totalPacientes;
+            document.querySelector('div:nth-child(2) > p.text-2xl').textContent = taxaConversao + '%';
+            document.querySelector('div:nth-child(3) > p.text-2xl').textContent = fechamentos;
+        }
+
+        // Inicializar as estatísticas
+        updateStats();
+
+        // Chart Colors
+        const CHART_COLORS = {
+            red: '#FFB5B5',    // Pastel Red
+            blue: '#B5D8FF',   // Pastel Blue
+            orange: '#FFE5B5', // Pastel Orange
+            green: '#B5FFB5',  // Pastel Green
+            purple: '#E5B5FF'  // Pastel Purple
+        };
+
+        // Complaints Chart Data
+        const complaintsData = {
+            labels: ['Dentes apinhados', 'Mordida aberta', 'Diastema', 'Mordida cruzada', 'Outros'],
+            datasets: [{
+                label: 'Pacientes',
+                data: [275, 200, 287, 173, 190],
+                backgroundColor: Object.values(CHART_COLORS),
+                borderWidth: 0,
+                hoverOffset: 4
+            }]
+        };
+
+        // Complaints Chart Config
+        const complaintsConfig = {
+            type: 'doughnut',
+            data: complaintsData,
+            options: {
+                cutout: '75%',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#fff',
+                            padding: 10,
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 12,
+                                weight: 400
+                            },
+                            boxWidth: 15,
+                            boxHeight: 15,
+                            borderRadius: 4
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        bodyColor: '#fff',
+                        titleColor: '#fff',
+                        bodyFont: {
+                            family: "'Inter', sans-serif",
+                            weight: 400
+                        },
+                        titleFont: {
+                            family: "'Inter', sans-serif",
+                            weight: 600
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((acc, curr) => acc + curr, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${value} (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Initialize Complaints Chart
+        const complaintsChart = new Chart(
+            document.getElementById('complaintsChart'),
+            complaintsConfig
+        );
+
+        // Time Chart Data
+        const timeData = {
+            labels: ['Avaliação', 'Manutenção', 'Emergência'],
+            datasets: [{
+                label: 'Minutos',
+                data: [45, 30, 20],
+                backgroundColor: [
+                    CHART_COLORS.red,
+                    CHART_COLORS.blue,
+                    CHART_COLORS.orange
+                ],
+                borderRadius: 4,
+                borderWidth: 0
+            }]
+        };
+
+        // Time Chart Config
+        const timeConfig = {
+            type: 'bar',
+            data: timeData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        bodyFont: {
+                            family: "'Inter', sans-serif",
+                            weight: 400
+                        },
+                        titleFont: {
+                            family: "'Inter', sans-serif",
+                            weight: 600
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#fff',
+                            font: {
+                                family: "'Inter', sans-serif",
+                                weight: 400
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#fff',
+                            font: {
+                                family: "'Inter', sans-serif",
+                                weight: 400
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Initialize Time Chart
+        const timeChart = new Chart(
+            document.getElementById('timeChart'),
+            timeConfig
+        );
+
+        // Conversion Chart Data
+        const conversionData = {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [
+                {
+                    label: 'Avaliações',
+                    data: [65, 78, 82, 75, 85, 92],
+                    borderColor: CHART_COLORS.blue,
+                    backgroundColor: CHART_COLORS.blue + '40',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointBackgroundColor: CHART_COLORS.blue
+                },
+                {
+                    label: 'Conversões',
+                    data: [40, 55, 60, 52, 68, 78],
+                    borderColor: CHART_COLORS.green,
+                    backgroundColor: CHART_COLORS.green + '40',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointBackgroundColor: CHART_COLORS.green
+                }
+            ]
+        };
+
+        // Conversion Chart Config
+        const conversionConfig = {
+            type: 'line',
+            data: conversionData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        align: 'center',
+                        labels: {
+                            color: '#fff',
+                            padding: 10,
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 12,
+                                weight: 400
+                            },
+                            boxWidth: 15,
+                            boxHeight: 15,
+                            borderRadius: 4
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        bodyColor: '#fff',
+                        titleColor: '#fff',
+                        bodyFont: {
+                            family: "'Inter', sans-serif",
+                            weight: 400
+                        },
+                        titleFont: {
+                            family: "'Inter', sans-serif",
+                            weight: 600
+                        },
+                        padding: 10
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#fff',
+                            font: {
+                                family: "'Inter', sans-serif",
+                                weight: 400
+                            },
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#fff',
+                            font: {
+                                family: "'Inter', sans-serif",
+                                weight: 400
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Initialize Conversion Chart
+        const conversionChart = new Chart(
+            document.getElementById('conversionChart'),
+            conversionConfig
+        );
+
+        // Abrir e fechar o menu lateral
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const menuButton = document.getElementById('menuButton');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        menuButton.addEventListener('click', () => {
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

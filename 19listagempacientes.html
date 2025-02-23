@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Pacientes - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+        <!-- Blur gradient effect -->
+        <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+    
+        <!-- Header -->
+        <header class="mb-4">
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <div class="flex items-center justify-between">
+                    <a href="17exibicaoapresentacao.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                        <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                    </a>
+                    <h2 class="text-xl font-semibold">Listagem de Pacientes</h2>
+                    <div class="p-2 opacity-0">
+                        <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <div class="container mx-auto">      
+            <!-- Search and Filters -->
+            <div class="flex flex-rows md:flex-row gap-2 mb-6">
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text" class="w-full bg-gray-800/50 rounded-lg pl-10 pr-4 py-2 text-white placeholder-gray-400 border border-gray-700" placeholder="Buscar paciente...">
+                        <i data-lucide="search" class="absolute left-3 top-2.5 h-5 w-5 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <select class="bg-gray-800/50 rounded-lg px-4 py-2 text-white border border-gray-700">
+                        <option value="">Ordenar por</option>
+                        <option value="nome">Nome</option>
+                        <option value="data">Data</option>
+                        <option value="status">Status</option>
+                    </select>
+                </div>
+            </div>
+
+        <!-- Patient List -->
+        <div class="grid gap-4">
+            <!-- Patient Card -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 hover:bg-gray-800/70 transition-colors">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-gray-700 rounded-full overflow-hidden">
+                            <img src="asset/homem.jpeg" alt="Foto do Paciente" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">João Silva</h3>
+                            <p class="text-gray-400">Última consulta: 10/02/2025</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <a href="20edicaocaso.html" class="p-2 bg-gray-700/50 rounded-lg transition-colors hover:bg-gray-700">
+                            <i data-lucide="edit" class="h-5 w-5"></i>
+                        </a>
+                        <a href="21historicoconsultas.html" class="p-2 bg-gray-700/50 rounded-lg transition-colors hover:bg-gray-700">
+                            <i data-lucide="history" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Patient Cards (Examples) -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 hover:bg-gray-800/70 transition-colors">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-gray-700 rounded-full overflow-hidden">
+                            <img src="asset/mulher.webp" alt="Foto do Paciente" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Maria Santos</h3>
+                            <p class="text-gray-400">Última consulta: 05/02/2025</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <a href="20edicaocaso.html" class="p-2 bg-gray-700/50 rounded-lg transition-colors hover:bg-gray-700">
+                            <i data-lucide="edit" class="h-5 w-5"></i>
+                        </a>
+                        <a href="21historicoconsultas.html" class="p-2 bg-gray-700/50 rounded-lg transition-colors hover:bg-gray-700">
+                            <i data-lucide="history" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

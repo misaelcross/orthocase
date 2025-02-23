@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Queixas - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .blur-gradient {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(120deg, #D6FE95 0%, #b3e07f 100%);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        /* Custom checkbox styling */
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            margin-right: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .custom-checkbox:checked {
+            background: #007bff;
+            border-color: #007bff;
+        }
+
+        .custom-checkbox:checked::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Navigation buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 1rem 0;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Gradient blur background -->
+    <div class="blur-gradient top-0 right-0"></div>
+
+    <div class="container mx-auto h-screen flex flex-col">
+        <div class="blur-gradient top-0 right-0"></div>
+
+        <!-- Header -->
+        <header class="mb-4">
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <div class="flex items-center justify-between">
+                    <a href="5dashboard.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                        <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                    </a>
+                    <h2 class="text-xl font-semibold">Seleção de Queixas</h2>
+                    <div class="p-2 opacity-0">
+                        <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <h3 class="text-lg font-semibold mb-4">Selecione as queixas do paciente:</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <div class="bg-gray-800/50 border border-gray-700 rounded w-5 h-5 flex items-center justify-center transition-colors peer-checked:bg-green-500 peer-checked:border-green-500">
+                            <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Apinhamento</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <div class="bg-gray-800/50 border border-gray-700 rounded w-5 h-5 flex items-center justify-center transition-colors peer-checked:bg-green-500 peer-checked:border-green-500">
+                            <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Mordida Cruzada</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <div class="bg-gray-800/50 border border-gray-700 rounded w-5 h-5 flex items-center justify-center transition-colors peer-checked:bg-green-500 peer-checked:border-green-500">
+                            <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Diastemas</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <div class="bg-gray-800/50 border border-gray-700 rounded w-5 h-5 flex items-center justify-center transition-colors peer-checked:bg-green-500 peer-checked:border-green-500">
+                            <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Sobremordida</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <div class="bg-gray-800/50 border border-gray-700 rounded w-5 h-5 flex items-center justify-center transition-colors peer-checked:bg-green-500 peer-checked:border-green-500">
+                            <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Outras</span>
+                    </label>
+                </div>
+            </div>
+            <!-- Planejamento -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <h2 class="text-xl font-semibold mb-4">Descrição da Queixa</h2>
+                <textarea class="w-full h-32 bg-gray-700/30 rounded-lg p-3 text-white resize-none border border-gray-700" placeholder="Digite a queixa do paciente..."></textarea>
+            </div>
+            <div class="mt-4 flex gap-2">
+                <button class="bg-gray-700/30 backdrop-blur-md text-white flex-1 px-3 py-2 rounded-lg transition-colors hover:bg-gray-700/50 w-full h-11">Voltar</button>
+                <button class="bg-[#D6FE95] text-black flex-1 px-3 py-2 rounded-lg transition-colors hover:bg-green-600 w-full h-11 font-semibold">Próximo</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <!-- <footer class="mt-4">
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 text-center">
+                <p class="text-gray-400"> 2024 OrtodentistaApp. Todos os direitos reservados.</p>
+            </div>
+        </footer> -->
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

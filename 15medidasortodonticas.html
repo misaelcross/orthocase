@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medidas Ortodônticas</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+    
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="14uploadradio.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Medidas Ortodônticas</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-4">
+
+        <!-- Measurement Input Fields -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 space-y-4">
+            <div>
+                <label for="angle" class="block text-sm font-medium text-gray-400">Ângulo:</label>
+                <input type="number" id="angle" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+            </div>
+            <div>
+                <label for="overjet" class="block text-sm font-medium text-gray-400">Overjet:</label>
+                <input type="number" id="overjet" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+            </div>
+            <div>
+                <label for="overbite" class="block text-sm font-medium text-gray-400">Overbite:</label>
+                <input type="number" id="overbite" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between gap-2">
+            <button onclick="goBack()" class="w-full justify-center flex items-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors">
+                <i data-lucide="arrow-left" class="h-6 w-6 mr-2"></i>
+                Voltar
+            </button>
+            <button onclick="goForward()" class="w-full flex items-center justify-center px-6 py-3 rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors font-semibold text-black bg-[#D6FE95]">
+                Próximo
+                <i data-lucide="arrow-right" class="h-6 w-6 ml-2"></i>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function goBack() {
+            // Implement navigation to previous step
+            // window.location.href = 'pagina-anterior.html';
+        }
+
+        function goForward() {
+            // Implement navigation to next step
+            // window.location.href = 'proxima-pagina.html';
+        }
+    </script>
+</body>
+</html>

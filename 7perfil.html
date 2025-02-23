@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .blur-gradient {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(120deg, #D6FE95 0%, #b3e07f 100%);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Gradient blur background -->
+    <div class="blur-gradient top-0 right-0"></div>
+
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between mb-6">
+                <a href="5dashboard.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Perfil</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+            <div class="flex justify-center mb-6">
+                <div class="w-24 h-24 rounded-full bg-gray-600 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <h1 class="text-2xl font-bold mb-2 text-center">Dr. João Silva</h1>
+            <div class="flex justify-center items-center gap-4 text-gray-400 text-sm">
+                <span>São Paulo, SP</span>
+                <span>|</span>
+                <span>15/03/1985</span>
+                <span>|</span>
+                <span>CRO: 12345-SP</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Informações Pessoais -->
+    <section class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+        <h2 class="text-lg font-normal mb-4">Informações Pessoais</h2>
+        <div class="space-y-3">
+            <div class="flex items-center gap-3">
+                <i data-lucide="mail" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>joao.silva@example.com</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="phone" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>(11) 99999-9999</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="map-pin" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>São Paulo, SP</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configurações -->
+    <section class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+        <h2 class="text-lg font-normal mb-4">Configurações</h2>
+        <div class="space-y-3">
+            <div class="flex items-center gap-3">
+                <i data-lucide="lock" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Alterar Senha</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="bell" class="h-5 w-5 text-[#D6FE95]"></i>
+                <span>Notificações</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão de Edição -->
+    <button class="w-full bg-[#D6FE95] text-gray-900 font-semibold py-3 rounded-lg">Editar Perfil</button>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

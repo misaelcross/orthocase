@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capturar Foto</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .blur-gradient {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(120deg, #D6FE95 0%, #b3e07f 100%);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .face-guide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border: 2px solid #22C55E;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+        .camera-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/16;
+            background-color: #1F2937;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <div class="blur-gradient left-0 top-0"></div>
+    
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="9selecaoqueixa.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Sorriso de Frente</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-4">
+         <div class="relative text-center px-4">
+                <p class="text-sm bg-gray-800/80 backdrop-blur-sm rounded-lg p-2 inline-block">
+                    Instruções curtas para a tomada de foto.<br>
+                    Ex: Alinhe o rosto ao contorno e sorria!
+                </p>
+            </div>
+        <div class="camera-container bg-gray-800/50 backdrop-blur-md">
+            <img src="asset/scanphoto.png" alt="Guia" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-contain pointer-events-none">
+        </div>
+
+        <!-- Camera Button -->
+        <div class="flex justify-center mt-2">
+            <button class="w-16 h-16 rounded-full bg-white border-4 border-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500 items-center flex justify-center"><i data-lucide="camera" class="text-green-500"></i></button>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

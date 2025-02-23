@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte e Ajuda - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="22configuracoes.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Suporte e Ajuda</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto">
+<!-- FAQ Section -->
+<div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+    <h3 class="text-lg font-semibold mb-4">Perguntas Frequentes</h3>
+    <div class="space-y-4">
+        <div class="border border-gray-700 rounded-lg">
+            <button class="flex items-center justify-between w-full p-4 text-left">
+                <span>Como adicionar um novo paciente?</span>
+                <i data-lucide="chevron-down" class="h-5 w-5 transform transition-transform"></i>
+            </button>
+            <div class="p-4 border-t border-gray-700 bg-gray-800/30 hidden">
+                <p class="text-gray-300">Para adicionar um novo paciente, clique no botão "+" na tela principal e preencha as informações necessárias no formulário de cadastro.</p>
+            </div>
+        </div>                
+
+        <div class="border border-gray-700 rounded-lg">
+            <button class="flex items-center justify-between w-full p-4 text-left">
+                <span>Como exportar uma apresentação?</span>
+                <i data-lucide="chevron-down" class="h-5 w-5"></i>
+            </button>
+            <div class="p-4 border-t border-gray-700 bg-gray-800/30 hidden">
+                <p class="text-gray-300">Na tela de apresentação, clique no botão "Exportar" e escolha o formato desejado (PDF ou PowerPoint).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Contato Section -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <h3 class="text-lg font-semibold mb-4">Contato</h3>
+            <div class="space-y-4">
+                <a href="#" class="flex items-center gap-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors">
+                    <i data-lucide="message-circle" class="h-6 w-6 text-[#D6FE95]"></i>
+                    <div>
+                        <h4 class="font-medium">Chat ao Vivo</h4>
+                        <p class="text-sm text-gray-400">Fale com nossa equipe em tempo real</p>
+                    </div>
+                </a>
+
+                <a href="mailto:suporte@ortodentistaapp.com" class="flex items-center gap-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors">
+                    <i data-lucide="mail" class="h-6 w-6 text-[#D6FE95]"></i>
+                    <div>
+                        <h4 class="font-medium">E-mail</h4>
+                        <p class="text-sm text-gray-400">suporte@ortodentistaapp.com</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tutoriais Section -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <h3 class="text-lg font-semibold mb-4">Tutoriais em Vídeo</h3>
+            <div class="grid gap-4">
+                <a href="#" class="flex items-center gap-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors">
+                    <div class="w-24 h-16 bg-gray-800 rounded-lg flex items-center justify-center">
+                        <i data-lucide="play" class="h-8 w-8 text-[#D6FE95]"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Introdução ao App</h4>
+                        <p class="text-sm text-gray-400">Aprenda as funcionalidades básicas</p>
+                    </div>
+                </a>
+
+                <a href="#" class="flex items-center gap-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors">
+                    <div class="w-24 h-16 bg-gray-800 rounded-lg flex items-center justify-center">
+                        <i data-lucide="play" class="h-8 w-8 text-[#D6FE95]"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Gerenciando Pacientes</h4>
+                        <p class="text-sm text-gray-400">Como organizar seus casos clínicos</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Button -->
+        <div class="flex justify-center mt-6">
+            <button onclick="goBack()" class="w-full justify-center flex items-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors">
+                Voltar
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+    
+            // Accordion functionality
+            document.querySelectorAll('.border button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+    
+                    // Toggle visibility of the content
+                    content.classList.toggle('hidden');
+    
+                    // Rotate the icon
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORTHOCASE - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('ledtoothbg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            background-color: #000;
+        }
+        .card-gradient {
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white min-h-screen">
+    <div class="relative min-h-screen flex items-end justify-center p-4 pb-8">
+        <!-- Main Content -->
+        <div class="w-full max-w-md space-y-4">
+            <!-- Logo Container -->
+            <div class="text-center">
+                <h1 class="text-4xl font-bold tracking-tight mb-1">
+                    ORTHOCASE
+                </h1>
+                <p class="text-sm text-white font-light">
+                    Suas consultas ortodônticas com IA!
+                </p>
+            </div>
+
+            <!-- Login Form Container -->
+            <div class="rounded-3xl bg-gray-800/40 backdrop-blur-xl p-8 card-gradient space-y-6">
+                <!-- Email Input -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-200">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>E-mail</span>
+                        </div>
+                    </label>
+                    <input type="email" class="w-full h-12 px-4 rounded-xl bg-gray-800/50 border border-gray-700 focus:border-[#D6FE95] focus:ring-1 focus:ring-[#D6FE95] transition-colors text-white" placeholder="seu@email.com">
+                </div>
+
+                <!-- Password Input -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-200">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="lock" class="w-4 h-4"></i>
+                            <span>Senha</span>
+                        </div>
+                    </label>
+                    <input type="password" class="w-full h-12 px-4 rounded-xl bg-gray-800/50 border border-gray-700 focus:border-[#D6FE95] focus:ring-1 focus:ring-[#D6FE95] transition-colors text-white" placeholder="••••••••">
+                    <a href="4esquecisenha.html" class="block text-sm text-gray-400 hover:text-[#D6FE95] transition-colors">
+                        Esqueci minha senha
+                    </a>
+                </div>
+
+                <!-- Login Button -->
+                <button class="w-full h-12 bg-[#D6FE95] hover:bg-[#c1eb80] text-black font-medium px-6 rounded-xl transition-all duration-200 text-lg" onclick="window.location.href='5dashboard.html'">
+                    Entrar
+                </button>
+
+
+                <!-- Create Account Button -->
+                <button class="w-full h-12 flex items-center justify-center gap-2 px-4 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-gray-600 transition-colors" onclick="window.location.href='3cadastro.html'">
+                    Criar conta
+                </button>
+
+                <!-- Social Login -->
+                <div class="space-y-4">
+                    <div class="relative text-center">
+                        <div class="flex items-center gap-4">
+                            <hr class="flex-1 border-gray-700">
+                            <span class="text-sm text-gray-400">ou continue com</span>
+                            <hr class="flex-1 border-gray-700">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="h-12 flex items-center justify-center gap-2 px-4 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-gray-600 transition-colors">
+                            <img src="https://www.google.com/favicon.ico" alt="Google" class="w-5 h-5">
+                            <span>Google</span>
+                        </button>
+                        <button class="h-12 flex items-center justify-center gap-2 px-4 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-gray-600 transition-colors">
+                            <img src="applelogo.svg" alt="Google" class="w-5 h-5">
+                            <span>Apple</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

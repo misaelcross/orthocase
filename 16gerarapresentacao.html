@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Apresentação</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS for the loading animation */
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+    
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="15medidasortodonticas.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Gerar Apresentação</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col items-center gap-4">
+        <!-- Loading Section -->
+        <div class="w-full bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 space-y-4 flex flex-col items-center">
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-green-600 h-2.5 rounded-full" style="width: 60%"></div>
+            </div>
+
+            <!-- Status Message -->
+            <p class="text-sm">A IA está compilando as fotos, medidas e informações do paciente...</p>
+        </div>
+
+        <!-- Layout Selection -->
+        <div class="w-full bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <label for="layout" class="block text-sm font-medium text-gray-400">Selecione o Layout da Apresentação:</label>
+            <select id="layout" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+                <option value="layout1">Layout 1</option>
+                <option value="layout2">Layout 2</option>
+                <option value="layout3">Layout 3</option>
+            </select>
+        </div>
+
+        <!-- Generate Presentation Button -->
+        <button onclick="generatePresentation()" class="w-full justify-center items-center px-6 py-3 rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors font-semibold text-black bg-[#D6FE95]">
+            Gerar Apresentação
+            <i data-lucide="file-presentation" class="h-6 w-6 ml-2"></i>
+        </button>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function generatePresentation() {
+            // Implement presentation generation logic
+            // window.location.href = 'apresentacao-gerada.html';
+        }
+    </script>
+</body>
+</html>

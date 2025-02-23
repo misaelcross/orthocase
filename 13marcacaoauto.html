@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcação Automática</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+    
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="12enquadramentofoto.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Análise Ortodôntica</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-4">
+        <!-- Status Message -->
+        <div class="relative text-center px-4">
+            <p id="statusMessage" class="text-sm bg-gray-800/80 backdrop-blur-sm rounded-lg p-2 inline-block">
+                Analisando características ortodônticas...
+            </p>
+        </div>
+
+        <!-- Image Analysis Container -->
+        <div class="relative w-full aspect-[9/16] bg-gray-800/50 backdrop-blur-md rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+                <img src="asset/scanphoto.png" alt="Foto do Paciente" class="w-full h-full object-contain" id="patientPhoto">
+                
+                <!-- Overlay for measurements -->
+                <canvas id="measurementOverlay" class="absolute inset-0 w-full h-full"></canvas>
+                
+                <!-- Analysis Results Panel -->
+                <div id="analysisPanel" class="absolute right-0 top-0 bottom-0 w-2/3 bg-black/80 backdrop-blur-sm p-4 transform translate-x-full transition-transform duration-300 z-10">
+                    <h3 class="text-lg font-semibold mb-4">Características Identificadas</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-800/50 rounded-lg p-3">
+                            <span class="text-green-400">Classificação Angle:</span>
+                            <p id="angleClass" class="text-sm">Classe I</p>
+                        </div>
+                        <div class="bg-gray-800/50 rounded-lg p-3">
+                            <span class="text-green-400">Mordida:</span>
+                            <p id="biteType" class="text-sm">Normal</p>
+                        </div>
+                        <div class="bg-gray-800/50 rounded-lg p-3">
+                            <span class="text-green-400">Apinhamento:</span>
+                            <p id="crowding" class="text-sm">Leve</p>
+                        </div>
+                        <div class="bg-gray-800/50 rounded-lg p-3">
+                            <span class="text-green-400">Medidas:</span>
+                            <ul id="measurements" class="text-sm list-disc pl-4">
+                                <li>Ângulo facial: 87.5°</li>
+                                <li>Linha média: 0.5mm desvio</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons inside Image -->
+                <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex justify-center gap-2 w-full px-2">
+                    <button onclick="toggleAnalysis()" class="justify-center w-1/2 flex items-center px-6 py-3 rounded-lg bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors opacity-70">
+                        <i data-lucide="layout-panel-left" class="h-6 w-6 mr-2 flex-shrink-0"></i>
+                        Análise
+                    </button>
+                    <button onclick="toggleMeasurements()" class="justify-center w-1/2 flex items-center px-6 py-3 rounded-lg bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors opacity-70">
+                        <i data-lucide="ruler" class="h-6 w-6 mr-2 flex-shrink-0"></i>
+                        Medidas
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-center gap-4 mt-2">
+            <button onclick="retakePhoto()" class="flex justify-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors flex-1">
+                <i data-lucide="x" class="h-6 w-6 mr-2"></i>
+                Cancelar
+            </button>
+            <button onclick="confirmPhoto()" class="flex justify-center px-6 py-3 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors flex-1 font-semibold text-black bg-[#D6FE95]">
+                <i data-lucide="check" class="h-6 w-6 mr-2"></i>
+                Confirmar
+            </button>
+        </div>  
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        let analysisVisible = false;
+        let measurementsVisible = false;
+
+        // Toggle analysis panel
+        function toggleAnalysis() {
+            const panel = document.getElementById('analysisPanel');
+            analysisVisible = !analysisVisible;
+            panel.style.transform = analysisVisible ? 'translateX(0)' : 'translateX(100%)';
+        }
+
+        // Toggle measurement overlay
+        function toggleMeasurements() {
+            measurementsVisible = !measurementsVisible;
+            const canvas = document.getElementById('measurementOverlay');
+            if (measurementsVisible) {
+                drawMeasurements(canvas);
+            } else {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        // Draw measurements on canvas
+        function drawMeasurements(canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            // Example: Draw facial midline
+            ctx.strokeStyle = '#22C55E';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+
+            // Example: Draw horizontal reference line
+            ctx.strokeStyle = '#EAB308';
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height * 0.4);
+            ctx.lineTo(canvas.width, canvas.height * 0.4);
+            ctx.stroke();
+        }
+
+        // Confirm analysis and proceed
+        function confirmAnalysis() {
+            // Implement navigation to next step
+            // window.location.href = 'proxima-pagina.html';
+        }
+
+        // Initialize measurements when page loads
+        window.addEventListener('load', () => {
+            // Simulate AI analysis completion
+            setTimeout(() => {
+                document.getElementById('statusMessage').textContent = 'Análise concluída! Revise as marcações.';
+                document.getElementById('statusMessage').classList.add('bg-green-600/80');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

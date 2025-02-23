@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição de Caso Clínico - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <style>
+        input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%) brightness(100%);
+}
+
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="17exibicaoapresentacao.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Listagem de Pacientes</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container mx-auto">
+        <div class="grid gap-8">
+            <!-- Informações Básicas -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <h2 class="text-xl font-semibold mb-4">Informações do Paciente</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Nome Completo</label>
+                        <input type="text" class="w-full bg-gray-700/30 rounded-lg p-2 text-white border border-gray-700" value="João Silva">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Data de Nascimento</label>
+                        <input type="date" class="w-full bg-gray-700/30 rounded-lg p-2 text-white border border-gray-700" value="1990-05-15">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Telefone</label>
+                        <input type="tel" class="w-full bg-gray-700/30 rounded-lg p-2 text-white border border-gray-700" value="(11) 98765-4321">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                        <input type="email" class="w-full bg-gray-700/30 rounded-lg p-2 text-white border border-gray-700" value="joao.silva@email.com">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fotos do Caso -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <h2 class="text-xl font-semibold mb-4">Fotos do Caso</h2>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <!-- Foto Card -->
+                    <div class="relative group">
+                        <div class="absolute top-2 right-2 flex gap-2">
+                            <button type="button" class="p-2 bg-gray-700/50 rounded-lg transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-9 9"/><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 9-9"/><path d="M23 4v6h-6"/></svg>
+                            </button>
+                            <button type="button" onclick="removePhoto(this)" class="p-2 bg-gray-700/50 rounded-lg transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="w-full h-84 bg-gray-700 rounded-lg overflow-hidden">
+                            <img src="asset/rostoperfil.png" alt="Foto do Caso" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="p-2 bg-gray-900/50 rounded-lg hover:bg-gray-900/70">
+                                <i data-lucide="edit" class="h-5 w-5"></i>
+                            </button>
+                            <button class="p-2 bg-gray-900/50 rounded-lg hover:bg-gray-900/70">
+                                <i data-lucide="trash-2" class="h-5 w-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anotações -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <h2 class="text-xl font-semibold mb-4">Anotações do Caso</h2>
+                <textarea class="w-full h-32 bg-gray-700/30 rounded-lg p-3 text-white resize-none border border-gray-700" placeholder="Digite suas observações sobre o caso...">Paciente apresenta necessidade de correção na mordida. Iniciado tratamento com aparelho fixo.</textarea>
+            </div>
+
+            <!-- Diagnóstico -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <h2 class="text-xl font-semibold mb-4">Diagnóstico</h2>
+                <textarea class="w-full h-32 bg-gray-700/30 rounded-lg p-3 text-white resize-none border border-gray-700" placeholder="Digite o diagnóstico do caso..."></textarea>
+            </div>
+
+            <!-- Planejamento -->
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <h2 class="text-xl font-semibold mb-4">Planejamento</h2>
+                <textarea class="w-full h-32 bg-gray-700/30 rounded-lg p-3 text-white resize-none border border-gray-700" placeholder="Digite o planejamento do caso..."></textarea>
+            </div>
+
+            <!-- Navigation Buttons -->
+             <div class="flex justify-between gap-2">
+            <button onclick="goBack()" class="w-full justify-center flex items-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors">
+                Cancelar
+            </button>
+            <button onclick="goForward()" class="w-full flex items-center justify-center px-6 py-3 rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors font-semibold text-black bg-[#D6FE95]">
+                Salvar Alterações
+            </button>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

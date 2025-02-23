@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Radiografias</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+    
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="13marcacaoauto.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Upload de Radiografias</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-4">
+
+        <!-- Upload Fields -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 space-y-4">
+            <div>
+                <label for="panoramica" class="block text-sm font-medium mb-2">Radiografia Panorâmica:</label>
+                <div class="flex items-center justify-center w-full">
+                    <div class="flex flex-col items-center justify-center w-full h-48 bg-gray-700/20 rounded-2xl border-2 border-gray-600 border-dashed cursor-pointer">
+                        <i data-lucide="cloud-upload" class="h-8 w-8 text-gray-400"></i>
+                        <p class="text-sm text-gray-400">Selecionar aqruivo</p>
+                        <input type="file" id="panoramica" class="hidden">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="telerradiografia" class="block text-sm font-medium mb-2">Telerradiografia Lateral:</label>
+                <div class="flex items-center justify-center w-full">
+                    <div class="flex flex-col items-center justify-center w-full h-48 bg-gray-700/20 rounded-2xl border-2 border-gray-600 border-dashed cursor-pointer">
+                        <i data-lucide="cloud-upload" class="h-8 w-8 text-gray-400"></i>
+                        <p class="text-sm text-gray-400">Selecionar aqruivo</p>
+                        <input type="file" id="telerradiografia" class="hidden">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue Button -->
+        <div class="flex justify-center">
+            <button onclick="continueWithoutRadiographs()" class="justify-center w-full flex items-center px-6 py-3 rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors font-semibold text-black bg-[#D6FE95]">
+                Continuar sem arquivos
+                <i data-lucide="arrow-right" class="h-6 w-6 ml-2"></i>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function continueWithoutRadiographs() {
+            // Implement navigation to next step
+            // window.location.href = 'proxima-pagina.html';
+        }
+    </script>
+</body>
+</html>

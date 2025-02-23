@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Consultas - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="17exibicaoapresentacao.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Histórico de Consultas</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto">
+        <div class="grid gap-6">
+            <!-- Nova Consulta (Adicionado) -->
+            <!-- Linha do tempo -->
+            <div class="absolute left-6 top-24 bottom-[-485px] w-0.5 bg-gray-700"></div>
+            <div class="relative pl-12 pb-2">
+                <div class="absolute left-2 w-4 h-4 bg-[#D6FE95] rounded-full border-2 border-gray-600"></div>
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Consulta de Hoje</h3>
+                        <span class="text-gray-400">17/02/2025</span>
+                    </div>
+
+                    <!-- Procedimento -->
+                    <div class="mb-4">
+                        <h4 class="text-sm font-medium text-gray-400 mb-2">Procedimento Realizado</h4>
+                        <textarea id="procedimento-hoje" rows="4" class="block p-2.5 w-full text-sm text-white bg-gray-700/30 rounded-lg border border-gray-600 focus:ring-[#D6FE95] focus:border-[#D6FE95] dark:bg-gray-700/30 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#D6FE95] dark:focus:border-[#D6FE95]" placeholder="Descreva o procedimento realizado..."></textarea>
+                    </div>
+
+                    <!-- Botão para tirar fotos -->
+                    <div class="flex justify-center gap-4 mt-2">
+                        <button onclick="retakePhoto()" class="flex justify-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors flex-1">
+                            <i data-lucide="camera" class="h-6 w-6 mr-2"></i>
+                            Tirar Foto
+                        </button>
+                        <button onclick="confirmPhoto()" class="flex justify-center px-6 py-3 rounded-lg bg-[#D6FE95] hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors flex-1 font-semibold text-black">
+                            <i data-lucide="check" class="h-6 w-6 mr-2"></i>
+                            Salvar
+                        </button>
+                    </div>  
+                </div>
+            </div>
+
+            <!-- Timeline de Consultas -->
+            <div class="relative">
+
+                <!-- Consulta -->
+                <div class="relative pl-12 pb-8">
+                    <div class="absolute left-2 w-4 h-4 bg-[#D6FE95] rounded-full border-2 border-gray-600"></div>
+                    <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold">Consulta de Avaliação</h3>
+                            <span class="text-gray-400">10/02/2025</span>
+                        </div>
+                        
+                        <!-- Comparação de Fotos -->
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm text-gray-400 mb-2">Antes</p>
+                                <div class="w-full h-72 bg-gray-700 rounded-lg overflow-hidden">
+                                    <img src="asset/sorrisofrente.png" alt="Foto Antes" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400 mb-2">Depois</p>
+                                <div class="w-full h-72 bg-gray-700 rounded-lg overflow-hidden">
+                                    <img src="asset/sorrisofrente.png" alt="Foto Depois" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Observações -->
+                        <div class="mb-4">
+                            <h4 class="text-sm font-medium text-gray-400 mb-2">Observações</h4>
+                            <p class="text-white">Evolução significativa no alinhamento dos dentes anteriores. Paciente relatou maior conforto na mastigação.</p>
+                        </div>
+
+                        <!-- Procedimentos -->
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-400 mb-2">Procedimentos Realizados</h4>
+                            <ul class="list-disc list-inside text-white">
+                                <li>Ajuste do aparelho fixo</li>
+                                <li>Troca de elásticos</li>
+                                <li>Limpeza profissional</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consulta Anterior -->
+                <div class="relative pl-12 pb-8">
+                    <div class="absolute left-2 w-4 h-4 bg-gray-600 rounded-full border-2 border-gray-900"></div>
+                    <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold">Consulta de Acompanhamento</h3>
+                            <span class="text-gray-400">10/01/2025</span>
+                        </div>
+                        
+                        <!-- Observações -->
+                        <div class="mb-4">
+                            <h4 class="text-sm font-medium text-gray-400 mb-2">Observações</h4>
+                            <p class="text-white">Início do tratamento com aparelho fixo. Paciente adaptando-se bem às mudanças.</p>
+                        </div>
+
+                        <!-- Procedimentos -->
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-400 mb-2">Procedimentos Realizados</h4>
+                            <ul class="list-disc list-inside text-white">
+                                <li>Instalação do aparelho fixo</li>
+                                <li>Orientações de higiene</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

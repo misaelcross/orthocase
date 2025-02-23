@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Enquadramento</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+    
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="10capturarfoto.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Verificação da Foto</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-4 flex-grow">
+        <div class="relative text-center px-4">
+            <p id="statusMessage" class="text-sm bg-gray-800/80 backdrop-blur-sm rounded-lg p-2 inline-block">
+                Verificando o enquadramento da foto...
+            </p>
+        </div>
+
+        <div class="relative w-full h-full bg-gray-800/50 backdrop-blur-md rounded-xl overflow-hidden">
+            <img src="asset/scanphoto.png" alt="Foto Capturada" class="w-full h-full object-cover" id="capturedPhoto">
+            <div id="feedbackOverlay" class="absolute inset-0 flex items-center justify-center bg-black/70 opacity-0 transition-opacity duration-300">
+                <div class="text-center p-4">
+                    <i id="feedbackIcon" data-lucide="alert-circle" class="h-12 w-12 mx-auto mb-2"></i>
+                    <p id="feedbackMessage" class="text-sm"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-center gap-4 mt-2">
+            <button onclick="retakePhoto()" class="flex justify-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-700/30 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors flex-1">
+                <i data-lucide="camera" class="h-6 w-6 mr-2"></i>
+                Tirar Nova Foto
+            </button>
+            <button onclick="confirmPhoto()" class="flex justify-center px-6 py-3 rounded-lg bg-[#D6FE95] hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors flex-1 font-semibold text-black">
+                <i data-lucide="check" class="h-6 w-6 mr-2"></i>
+                Confirmar
+            </button>
+        </div>        
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // Simulação da verificação de IA (substitua por sua implementação real)
+        function checkPhotoFraming() {
+            // Aqui você implementaria a lógica real de verificação com IA
+            const feedback = {
+                isValid: Math.random() > 0.5, // Simulação
+                message: ""
+            };
+
+            if (!feedback.isValid) {
+                feedback.message = "O rosto não está bem centralizado. Por favor, tire uma nova foto seguindo o guia.";
+                showFeedback("alert-circle", feedback.message, "text-yellow-400");
+            } else {
+                feedback.message = "Foto adequada! Você pode prosseguir.";
+                showFeedback("check-circle", feedback.message, "text-green-400");
+            }
+        }
+
+        function showFeedback(icon, message, colorClass) {
+            const overlay = document.getElementById('feedbackOverlay');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const statusMessage = document.getElementById('statusMessage');
+
+            feedbackIcon.setAttribute('data-lucide', icon);
+            feedbackMessage.textContent = message;
+            feedbackMessage.className = `text-sm ${colorClass}`;
+            overlay.classList.add('opacity-100');
+            statusMessage.textContent = message;
+            lucide.createIcons();
+        }
+
+        function retakePhoto() {
+            window.location.href = '10capturarfoto.html';
+        }
+
+        function confirmPhoto() {
+            // Implementar navegação para a próxima etapa
+            // window.location.href = 'proxima-pagina.html';
+        }
+
+        // Iniciar verificação quando a página carregar
+        window.addEventListener('load', () => {
+            setTimeout(checkPhotoFraming, 1500); // Simula um delay de processamento
+        });
+    </script>
+</body>
+</html>

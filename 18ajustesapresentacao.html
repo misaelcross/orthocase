@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes da Apresentação</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+    
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="17exibicaoapresentacao.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Ajustes da Apresentação</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-4">
+        <form id="presentationForm" class="space-y-4">
+            <div id="cardContainer" class="space-y-4">
+                <!-- Patient -->
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 space-y-2 card">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <!-- Info -->
+                        <div class="flex flex-col gap-2 w-full">
+                            <label class="block text-sm font-medium text-gray-400">Nome do paciente</label>
+                            <input type="text" name="nome" class="w-full p-2 rounded-md bg-gray-700/30 text-gray-400" value="Insira o nome do paciente">
+                            <label class="block text-sm font-medium text-gray-400">Características</label>
+                            <div class="flex flex-wrap gap-2 p-2 rounded-md bg-gray-700/30">
+                                <input type="text" class="toggle-input flex-grow bg-transparent outline-none text-white" placeholder="Para inserir use vírgula &quot;,&quot;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Visao -->
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 space-y-2 card">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <!-- Photo -->
+                        <div class="w-full h-84 flex-shrink-0 relative group">
+                            <div class="absolute top-2 right-2 flex gap-2">
+                                <button type="button" class="p-2 bg-gray-700/50 rounded-lg transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-9 9"/><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 9-9"/><path d="M23 4v6h-6"/></svg>
+                                </button>
+                                <button type="button" onclick="removePhoto(this)" class="p-2 bg-gray-700/50 rounded-lg transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                                </button>
+                            </div>
+                            <div class="photo-container w-full h-full">
+                                <img src="asset/sorrisofrente.png" alt="Foto do Paciente" class="w-full h-full object-cover rounded-md">
+                            </div>
+                            <div class="empty-state hidden flex-col items-center justify-center w-full bg-gray-700/50 rounded-2xl border-2 border-gray-600 border-dashed h-84">
+                                <i data-lucide="refresh-ccw" class="h-8 w-8 text-gray-400"></i>
+                                <p class="text-sm text-gray-400">Selecionar imagem</p>
+                                <input type="file" class="hidden">
+                            </div>
+                        </div>
+                        <!-- Info -->
+                        <div class="flex flex-col gap-2 w-full">
+                            <label class="block text-sm font-medium text-gray-400">Visão</label>
+                            <input type="text" name="nome" class="w-full p-2 rounded-md bg-gray-700/30 text-white" value="Sorriso Frontal">
+                            <label class="block text-sm font-medium text-gray-400">Resumo</label>
+                            <textarea name="resumo" rows="2" class="w-full bg-gray-700/30 p-2 rounded-md text-white">Mordida que não está encaixada</textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- Visao -->
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 space-y-2 card">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <!-- Photo -->
+                        <div class="w-full flex-shrink-0 relative group">
+                            <div class="absolute top-2 right-2 flex gap-2">
+                                <button type="button" class="p-2 bg-gray-700/50 rounded-lg transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-9 9"/><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 9-9"/><path d="M23 4v6h-6"/></svg>
+                                </button>
+                                <button type="button" onclick="removePhoto(this)" class="p-2 bg-gray-700/50 rounded-lg transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                                </button>
+                            </div>
+                            <div class="photo-container w-full h-full">
+                                <img src="asset/rostoperfil.png" alt="Foto do Paciente" class="w-full h-full object-cover rounded-md">
+                            </div>
+                            <div class="empty-state hidden flex-col items-center justify-center w-full absolute top-0 left-0 bg-gray-700/50 rounded-2xl border-2 border-gray-600 border-dashed h-84">
+                                <i data-lucide="refresh-ccw" class="h-8 w-8 text-gray-400"></i>
+                                <p class="text-sm text-gray-400">Selecionar imagem</p>
+                                <input type="file" class="hidden">
+                            </div>
+                        </div>
+                        <!-- Info -->
+                        <div class="flex flex-col gap-2 w-full">
+                            <label class="block text-sm font-medium text-gray-400">Visão</label>
+                            <input type="text" name="nome" class="w-full p-2 rounded-md bg-gray-700/30 text-white" value="Sorriso Frontal">
+                            <label class="block text-sm font-medium text-gray-400">Resumo</label>
+                            <textarea name="resumo" rows="2" class="w-full bg-gray-700/30 p-2 rounded-md text-white">Mordida que não está encaixada</textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo -->
+                <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 w-full flex-shrink-0 relative group">
+                    <div class="empty-state flex flex-col items-center justify-center w-full h-84 min-h-[21rem] bg-gray-700/20 rounded-lg border-2 border-gray-600 border-dashed">
+                        <i data-lucide="image-plus" class="h-8 w-8 text-gray-400"></i>
+                        <p class="text-sm text-gray-400 p-4">Selecionar imagem</p>
+                        <input type="file" class="hidden">
+                    </div>
+                    <!-- Info -->
+                    <div class="flex flex-col gap-2 w-full mt-4">
+                        <label class="block text-sm font-medium text-gray-400">Visão</label>
+                        <input type="text" name="nome" class="w-full p-2 rounded-md bg-gray-700/30 text-gray-400" value="Digite a visão">
+                        <label class="block text-sm font-medium text-gray-400">Resumo</label>
+                        <div class="flex flex-wrap gap-2 p-2 rounded-md bg-gray-700/30">
+                            <input type="text" class="toggle-input flex-grow bg-transparent outline-none text-white" placeholder="Explique brevemente">
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+
+            <!-- Add card button -->
+            <button type="button" id="addCardButton" class="px-4 py-3 bg-gray-700/20 rounded-lg border-2 border-gray-600 border-dashed w-full">
+                Adicionar foto
+            </button>
+        </form>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between gap-2">
+            <button onclick="goBack()" class="w-full justify-center flex items-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors">
+                Cancelar
+            </button>
+            <button onclick="goForward()" class="w-full flex items-center justify-center px-6 py-3 rounded-lg hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors font-semibold text-black bg-[#D6FE95]">
+                Concluir
+            </button>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function goBack() {
+            window.location.href = '17exibicaoapresentacao.html';
+        }
+
+        function goForward() {
+            // Implement navigation to the next screen
+        }
+
+        function initToggleField(inputElement) {
+          inputElement.addEventListener('keyup', function(e) {
+              if (e.key === ',') {
+                  let text = inputElement.value.slice(0, -1).trim();
+                  if (text) {
+                      addToggle(inputElement.parentElement, text);
+                  }
+                  inputElement.value = '';
+              }
+          });
+        }
+
+        function addToggle(container, text) {
+          var toggle = document.createElement('span');
+          toggle.className = 'bg-green-600/50 text-white px-2 py-1 rounded flex items-center';
+          toggle.textContent = text;
+          var removeBtn = document.createElement('span');
+          removeBtn.className = 'ml-2 cursor-pointer';
+          removeBtn.textContent = 'x';
+          removeBtn.addEventListener('click', function() {
+              container.removeChild(toggle);
+          });
+          toggle.appendChild(removeBtn);
+          container.insertBefore(toggle, container.querySelector('input'));
+        }
+
+        function removePhoto(button) {
+            const photoContainer = button.closest('.relative').querySelector('.photo-container');
+            const emptyState = button.closest('.relative').querySelector('.empty-state');
+            
+            if (photoContainer && emptyState) {
+                photoContainer.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+            }
+        }
+
+        document.getElementById('addCardButton').addEventListener('click', function() {
+            var cardContainer = document.getElementById('cardContainer');
+            var firstCard = cardContainer.querySelector('.card');
+            var newCard = firstCard.cloneNode(true);
+            newCard.querySelector('input[name="nome"]').value = '';
+            newCard.querySelector('input[name="toggleQueixa"]').checked = false;
+            newCard.querySelector('textarea[name="resumo"]').value = '';
+            var toggleContainer = newCard.querySelector('.flex.flex-wrap.gap-2.border');
+            if (toggleContainer) {
+              var children = Array.from(toggleContainer.children);
+              children.forEach(child => {
+                 if(child.tagName !== 'INPUT') {
+                     toggleContainer.removeChild(child);
+                 }
+              });
+            }
+            cardContainer.appendChild(newCard);
+            initToggleField(newCard.querySelector('.toggle-input'));
+            lucide.createIcons();
+        });
+
+        document.querySelectorAll('.toggle-input').forEach(initToggleField);
+    </script>
+</body>
+</html>

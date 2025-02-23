@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coleta de Fotos</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .blur-gradient {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(120deg, #D6FE95 0%, #b3e07f 100%);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+
+        <!-- Header -->
+        <header class="mb-4">
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <div class="flex items-center justify-between">
+                    <a href="9selecaoqueixa.html" class="p-2 hover:bg-gray-700/30/50 rounded-full">
+                        <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                    </a>
+                    <h2 class="text-xl font-semibold">Coleta de Fotos</h2>
+                    <div class="p-2 opacity-0">
+                        <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+                <div class="grid grid-cols-2 gap-4 p-4">
+                    <!-- Rosto de frente -->
+                    <div class="flex flex-col items-center text-center relative rounded-lg">
+                        <div class="w-full aspect-square bg-gray-700/30 rounded-lg flex items-center justify-center mb-2 border-2 border-green-500">
+                            <img src="asset/rostofrente.png" alt="Rosto de frente" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <span class="text-sm">Rosto de frente</span>
+                        <div class="absolute right-2 top-2 bg-green-500 rounded-full p-1">
+                            <i data-lucide="check" class="h-4 w-4 text-white"></i>
+                        </div>
+                    </div>
+
+                    <!-- Rosto de perfil -->
+                    <div class="flex flex-col items-center text-center relative rounded-lg">
+                        <div class="w-full aspect-square bg-gray-700/30 rounded-lg flex items-center justify-center mb-2 border-2 border-green-500">
+                            <img src="asset/rostoperfil.png" alt="Rosto de perfil" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <span class="text-sm">Rosto de perfil</span>
+                        <div class="absolute right-2 top-2 bg-green-500 rounded-full p-1">
+                            <i data-lucide="check" class="h-4 w-4 text-white"></i>
+                        </div>
+                    </div>
+
+                    <!-- Sorriso de Frente -->
+                    <div class="flex flex-col items-center text-center relative rounded-lg">
+                        <div class="w-full aspect-square bg-gray-700/30 rounded-lg flex items-center justify-center mb-2 border-2 border-green-500">
+                            <img src="asset/sorrisofrente.png" alt="Sorriso de Frente" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <span class="text-sm">Sorriso de Frente</span>
+                        <div class="absolute right-2 top-2 bg-green-500 rounded-full p-1">
+                            <i data-lucide="check" class="h-4 w-4 text-white"></i>
+                        </div>
+                    </div>
+
+                    <!-- Sorriso lat. Direita -->
+                    <div class="flex flex-col items-center text-center relative">
+                        <div class="w-full aspect-square bg-gray-700/30 rounded-lg flex items-center justify-center mb-2 border border-gray-700 ">
+                            <i data-lucide="camera" class="h-12 w-12 text-gray-400"></i>
+                        </div>
+                        <span class="text-sm">Sorriso lat. Direita</span>
+                    </div>
+
+                    <!-- Sorriso lat. Esquerda -->
+                    <div class="flex flex-col items-center text-center relative">
+                        <div class="w-full aspect-square bg-gray-700/30 rounded-lg flex items-center justify-center mb-2 border border-gray-700 ">
+                            <i data-lucide="camera" class="h-12 w-12 text-gray-400"></i>
+                        </div>
+                        <span class="text-sm">Sorriso lat. Esquerda</span>
+                    </div>
+
+                    <!-- Oclusal superior -->
+                    <div class="flex flex-col items-center text-center relative">
+                        <div class="w-full aspect-square bg-gray-700/30 rounded-lg flex items-center justify-center mb-2 border border-gray-700 ">
+                            <i data-lucide="camera" class="h-12 w-12 text-gray-400"></i>
+                        </div>
+                        <span class="text-sm">Oclusal superior</span>
+                    </div>
+
+                    <!-- Oclusal inferior -->
+                    <div class="flex flex-col items-center text-center relative">
+                        <div class="w-full aspect-square bg-gray-700/30 rounded-lg flex items-center justify-center mb-2 border border-gray-700 ">
+                            <i data-lucide="camera" class="h-12 w-12 text-gray-400"></i>
+                        </div>
+                        <span class="text-sm">Oclusal inferior</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-4 flex gap-2">
+            <button class="bg-gray-800/50 backdrop-blur-md text-white flex-1 px-3 py-2 rounded-lg transition-colors hover:bg-gray-700/30/50 w-full h-11">Voltar</button>
+            <button class="bg-[#D6FE95] text-black flex-1 px-3 py-2 rounded-lg transition-colors hover:bg-green-600 w-full h-11 font-semibold">Próximo</button>
+        </div>
+    </div>
+    <!-- Gradient blur background -->
+    <div class="blur-gradient top-0 right-0"></div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

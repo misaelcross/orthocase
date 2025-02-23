@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Paciente - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .blur-gradient {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(120deg, #D6FE95 0%, #b3e07f 100%);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%) brightness(100%);
+}
+
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Gradient blur background -->
+    <div class="blur-gradient top-0 right-0"></div>
+
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="5dashboard.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Cadastrar Paciente</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Input de Foto -->
+    <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+        <label for="foto" class="block text-sm font-medium text-gray-400 mb-2">Foto do Paciente</label>
+        <div class="flex items-center justify-center w-full">
+            <label for="foto" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-700/30 border-dashed rounded-lg cursor-pointer hover:bg-gray-700/50">
+                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                    <i data-lucide="camera" class="h-8 w-8 text-gray-400 mb-2"></i>
+                    <p class="text-sm text-gray-400 text-center px-8">Toque aqui para tirar uma foto</p>
+                </div>
+                <input id="foto" type="file" class="hidden" accept="image/*" />
+            </label>
+        </div>
+    </div>
+
+    <!-- Formulário de Cadastro -->
+    <section class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+        <form>
+            <div class="space-y-4">
+                <div>
+                    <label for="nome" class="block text-sm font-medium text-gray-400">Nome</label>
+                    <input type="text" id="nome" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-400">E-mail</label>
+                    <input type="email" id="email" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+                </div>
+                <div>
+                    <label for="telefone" class="block text-sm font-medium text-gray-400">Telefone</label>
+                    <input type="tel" id="telefone" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+                </div>
+                <div>
+                    <label for="dataNascimento" class="block text-sm font-medium text-gray-400">Data de Nascimento</label>
+                    <input type="date" id="dataNascimento" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+                </div>
+                <div>
+                    <label for="endereco" class="block text-sm font-medium text-gray-400">Endereço</label>
+                    <input type="text" id="endereco" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]">
+                </div>
+                <div>
+                    <label for="observacoes" class="block text-sm font-medium text-gray-400">Observações</label>
+                    <textarea id="observacoes" class="w-full bg-gray-700/30 rounded-lg p-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#D6FE95]"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-[#D6FE95] text-black font-semibold py-3 rounded-lg mt-6">Criar paciente</button>
+        </form>
+    </section>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

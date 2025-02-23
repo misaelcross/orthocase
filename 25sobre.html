@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="22configuracoes.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Sobre</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto">
+        <!-- App Info -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4 text-center">
+            <img src="asset/logo.jpg" alt="OrtodentistaApp Logo" class="w-24 h-24 mx-auto mb-4 rounded-full">
+            <h1 class="text-2xl font-bold mb-2">ORTHOCASE</h1>
+            <p class="text-gray-400 mb-4">Versão 1.0.0</p>
+            <p class="text-sm text-gray-300 mb-4">
+                Desenvolvido para auxiliar ortodontistas no gerenciamento de casos clínicos e apresentações de tratamento.
+            </p>
+        </div>
+
+        <!-- Team -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <h3 class="text-lg font-semibold mb-4">Nossa Equipe</h3>
+            <div class="grid gap-4">
+                <div class="flex items-center gap-4 p-3 bg-gray-700/30 rounded-lg">
+                    <img src="asset/homem.jpeg" alt="Developer" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h4 class="font-medium">João Silva</h4>
+                        <p class="text-sm text-gray-400">Desenvolvedor Principal</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-3 bg-gray-700/30 rounded-lg">
+                    <img src="asset/mulher.webp" alt="Designer" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h4 class="font-medium">Maria Santos</h4>
+                        <p class="text-sm text-gray-400">Designer UX/UI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <h3 class="text-lg font-semibold mb-4">Redes Sociais</h3>
+            <div class="grid gap-4">
+                <a href="#" class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors">
+                    <i data-lucide="instagram" class="h-6 w-6 text-[#D6FE95]"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors">
+                    <i data-lucide="linkedin" class="h-6 w-6 text-[#D6FE95]"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors">
+                    <i data-lucide="globe" class="h-6 w-6 text-[#D6FE95]"></i>
+                    <span>Website</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Legal Info -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <h3 class="text-lg font-semibold mb-4">Informações Legais</h3>
+            <div class="space-y-4">
+                <a href="#" class="block text-gray-300 hover:text-white">Termos de Uso</a>
+                <a href="#" class="block text-gray-300 hover:text-white">Política de Privacidade</a>
+                <a href="#" class="block text-gray-300 hover:text-white">Licenças de Terceiros</a>
+            </div>
+        </div>
+
+        <!-- Navigation Button -->
+        <div class="flex justify-center mt-6">
+            <button onclick="goBack()" class="w-full justify-center flex items-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors">
+                Voltar
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

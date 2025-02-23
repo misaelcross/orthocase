@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assinatura e Pagamentos - OrtodentistaApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen font-inter px-[0.5rem] py-[0.5rem]">
+    <!-- Blur gradient effect -->
+    <div class="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#D6FE95] to-[#b3e07f] blur-[100px] rounded-full opacity-50 -z-10 left-0 top-0"></div>
+
+    <!-- Header -->
+    <header class="mb-4">
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+                <a href="22configuracoes.html" class="p-2 hover:bg-gray-700/50 rounded-full">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </a>
+                <h2 class="text-xl font-semibold">Assinatura</h2>
+                <div class="p-2 opacity-0">
+                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto">
+        <!-- Current Plan -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold">Plano Atual</h3>
+                <span class="px-3 py-1 bg-[#D6FE95]/20 text-[#D6FE95] rounded-full text-sm">Premium</span>
+            </div>
+            <div class="space-y-2">
+                <p class="text-gray-300">Próxima cobrança: 15/03/2025</p>
+                <p class="text-gray-300">Valor: R$ 99,90/mês</p>
+            </div>
+        </div>
+
+        <!-- Available Plans -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <h3 class="text-lg font-semibold mb-4">Planos Disponíveis</h3>
+            <div class="space-y-4">
+                <!-- Basic Plan -->
+                <div class="border border-gray-700 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-medium">Básico</h4>
+                            <p class="text-sm text-gray-400">Para profissionais iniciantes</p>
+                        </div>
+                        <p class="text-xl font-semibold">R$ 49,90<span class="text-sm text-gray-400">/mês</span></p>
+                    </div>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="h-5 w-5 text-[#D6FE95]"></i>
+                            <span class="text-gray-300">Até 50 pacientes</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="h-5 w-5 text-[#D6FE95]"></i>
+                            <span class="text-gray-300">Recursos básicos</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-2 rounded-lg border border-gray-600 hover:bg-gray-700/50 transition-colors">Selecionar</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="border-2 border-[#D6FE95] rounded-lg p-4 relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 bg-[#D6FE95] text-black text-sm font-semibold py-1 px-8 rotate-45">Popular</div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-medium">Premium</h4>
+                            <p class="text-sm text-gray-400">Para clínicas estabelecidas</p>
+                        </div>
+                        <p class="text-xl font-semibold">R$ 99,90<span class="text-sm text-gray-400">/mês</span></p>
+                    </div>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="h-5 w-5 text-[#D6FE95]"></i>
+                            <span class="text-gray-300">Pacientes ilimitados</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="h-5 w-5 text-[#D6FE95]"></i>
+                            <span class="text-gray-300">Recursos avançados</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="h-5 w-5 text-[#D6FE95]"></i>
+                            <span class="text-gray-300">Suporte prioritário</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-2 rounded-lg bg-[#D6FE95] text-black font-semibold hover:bg-[#c1e584] transition-colors">Plano Atual</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment History -->
+        <div class="bg-gray-800/50 backdrop-blur-md rounded-2xl p-4 mb-4">
+            <h3 class="text-lg font-semibold mb-4">Histórico de Pagamentos</h3>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center p-3 bg-gray-700/30 rounded-lg">
+                    <div>
+                        <p class="font-medium">Fevereiro 2025</p>
+                        <p class="text-sm text-gray-400">Premium</p>
+                    </div>
+                    <p class="text-[#D6FE95]">R$ 99,90</p>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-700/30 rounded-lg">
+                    <div>
+                        <p class="font-medium">Janeiro 2025</p>
+                        <p class="text-sm text-gray-400">Premium</p>
+                    </div>
+                    <p class="text-[#D6FE95]">R$ 99,90</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Button -->
+        <div class="flex justify-center mt-6">
+            <button onclick="goBack()" class="w-full justify-center flex items-center px-6 py-3 rounded-lg bg-gray-700/30 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors">
+                Voltar
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORTHOCASE - Bem-vindo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('ledtoothbg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            background-color: #000;
+        }
+        .card-gradient {
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+            border-radius: 24px;
+        }
+        .frosted-glass {
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 24px;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white min-h-screen">
+    <div class="relative min-h-screen flex items-end justify-center p-2">
+        <!-- Main Content -->
+        <div class="w-full max-w-md space-y-2 mb-0">
+            <!-- Logo Container -->
+            <div class="rounded-3xl bg-gray-800/40 backdrop-blur-xl p-8 card-gradient">
+                <div class="text-center space-y-2">
+                    <h1 class="text-4xl font-bold tracking-tight mb-1">
+                        ORTHOCASE
+                    </h1>
+                    <p class="text-sm text-gray-400 font-light">
+                        Suas consultas ortodônticas com IA!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Button and Terms Container -->
+            <div class="rounded-3xl bg-gray-800/10 backdrop-blur-xl p-4 card-gradient">
+                <a href="2login.html" class="flex items-center justify-between w-full bg-[#D6FE95] hover:bg-[#c1eb80] text-black font-medium py-4 px-6 rounded-2xl transition-all duration-200 text-lg">
+                    <span>Começar</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <div class="text-center pb-6 pt-6">
+                    <p class="text-xs text-gray-500">Ao utilizar nosso app você concorda com nossos termos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
